@@ -30,6 +30,17 @@ export function getUser(){
       }
     
 }
+export function isAdmin(){
+    try {
+        const jwt = localStorage.getItem(tokenKey);
+         const { isAdmin } = jwtDecode(jwt);
+         return isAdmin;
+        
+      } catch (ex) {
+         return null;
+      }
+    
+}
 
 export function logout(){
     localStorage.removeItem(tokenKey);
@@ -44,5 +55,6 @@ export default{
     loginWithJWT,
     getUser,
     logout,
+    isAdmin
    
 }
